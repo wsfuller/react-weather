@@ -1,0 +1,11 @@
+//
+// COMPONENTS - APP BAR
+//__________________________________________________
+
+.app-bar-branding {
+	display: flex;
+	flex-direction: row;
+	.app-bar-logo {
+		margin-right: .5rem;
+	}
+}

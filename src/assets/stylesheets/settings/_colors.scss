@@ -1,0 +1,21 @@
+//
+// SETTINGS - COLORS
+//__________________________________________________
+$primary-color: #00bcd4;
+$primary-color-dark: darken($primary-color, 10);
+$primary-color-light: lighten($primary-color, 10);
+
+$success-color: #39b54c;
+$error-color: #fd672f;
+
+$background-color: #f0f0f0;
+
+$border-color: #dedede;
+$border-color-dark: #adadad;
+
+$font-color-base: #484848;
+$font-color-base-dark: #565a5c;
+$font-color-base-light: #757575;
+$font-color-light: #ffffff;
+
+$shadow-color: #000000 !default;

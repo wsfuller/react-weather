@@ -1,0 +1,21 @@
+//
+// COMPONENTS - DATE
+//__________________________________________________
+
+.date {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	font-size: $h5-font-size;
+	@include break-md {
+		padding: 0;
+		font-size: $h4-font-size;
+	}
+	span {
+		margin-left: 0.5rem;
+		font-weight: 500;
+	}
+}

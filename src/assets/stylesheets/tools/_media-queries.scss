@@ -1,0 +1,44 @@
+//
+// TOOLS - MEDIA QUERIES
+//__________________________________________________
+@mixin break-xs {
+	@media only screen and (min-width: $screen-xs) {
+		@content;
+	}
+}
+
+@mixin only-break-xs {
+	@media only screen and (max-width: $screen-sm) {
+		@content;
+	}
+}
+
+@mixin break-sm {
+	@media only screen and (min-width: $screen-sm) {
+		@content;
+	}
+}
+
+@mixin only-break-sm {
+	@media only screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+		@content;
+	}
+}
+
+@mixin break-md {
+	@media only screen and (min-width: $screen-md) {
+		@content;
+	}
+}
+
+@mixin only-break-md {
+	@media only screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+		@content;
+	}
+}
+
+@mixin break-lg {
+	@media only screen and (min-width: $screen-lg) {
+		@content;
+	}
+}

@@ -1,0 +1,5 @@
+module.exports = {
+	APPLICATION_NAME: 'ReactWeather',
+	APPLICATION_VERSION: 'v1.0.0',
+	GOOGLE_MAPS_API_KEY: 'AIzaSyBRVjYJmAaw-XnwmauExrYqM1adFxE-vNY'
+};
