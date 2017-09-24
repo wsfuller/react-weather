@@ -1,6 +1,6 @@
 {
 	"name": "react-weather",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Weather application for viewing weather",
 	"main": "index.js",
 	"scripts": {
