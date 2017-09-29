@@ -1,6 +1,8 @@
 # React Weather
 
-`v1.0.0`
+[![Known Vulnerabilities](https://snyk.io/test/github/wsfuller/react-weather/badge.svg)](https://snyk.io/test/github/wsfuller/react-weather)
+
+`v1.0.2`
 
 Simple application for getting current weather information using the [OpenWeatherMap API](https://openweathermap.org/api)
 
