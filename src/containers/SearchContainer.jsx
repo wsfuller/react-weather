@@ -10,7 +10,7 @@ class SearchContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			searchQuery: 'san francisco, ca'
+			searchQuery: 'san francisco, US'
 		};
 	}
 	componentDidMount() {
@@ -18,7 +18,7 @@ class SearchContainer extends Component {
 	}
 
 	handleSearch = (city, state) => {
-		var newSearchQuery = city + ',' + state;
+		var newSearchQuery = city + ',US';
 		this.setState({ searchQuery: newSearchQuery }, function() {
 			console.log('setting state done', this.state.searchQuery);
 			this.props.fetchWeather(this.state.searchQuery);
