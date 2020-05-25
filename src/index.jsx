@@ -1,14 +1,17 @@
-require('./index.scss');
+// require('./index.scss');
 import React from 'react';
-import store from './store.js';
+import store from './redux/store.js';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { Fabric } from "@fluentui/react";
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-const tapEventPlugin = require('react-tap-event-plugin')();
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// initializeIcons();
+
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+// const tapEventPlugin = require('react-tap-event-plugin')();
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // const muiTheme = getMuiTheme({
 // 	palette: {
@@ -16,16 +19,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // 	}
 // });
 
-import App from './containers/App.jsx';
+import App from './components/App/App.jsx';
 
 ReactDOM.render(
 	<Provider store={store}>
-		{/* <MuiThemeProvider muiTheme={muiTheme}> */}
-		<MuiThemeProvider>
+		<Fabric>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
-		</MuiThemeProvider>
+		</Fabric>
 	</Provider>,
 	document.getElementById('root')
 );
