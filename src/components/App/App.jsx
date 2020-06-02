@@ -1,19 +1,36 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import Layout from '../Layout.jsx';
-// import Config from '../../helpers/config.js';
+import {
+  loadTheme,
+  classNamesFunction,
+  PrimaryButton,
+  styled,
+} from '@fluentui/react';
 
-function App(){
-	return (
-		<div>React Weather Application</div>
-	)
+import { styles } from './App.styles';
+import { lightMode, darkMode } from './themes';
+import Navigation from './Navigation';
+
+const getClassNames = classNamesFunction();
+
+let currentTheme = lightMode;
+loadTheme(currentTheme);
+
+const toggleTheme = () => {
+  currentTheme = currentTheme === lightMode ? darkMode : lightMode;
+  loadTheme(currentTheme);
+};
+
+function App(props) {
+  const { theme } = props;
+  const classNames = getClassNames(styles, theme);
+
+  return (
+    <div className={classNames.root}>
+      <Navigation />
+      React Weather Application
+      <PrimaryButton text="Change Theme" onClick={() => toggleTheme()} />
+    </div>
+  );
 }
 
-// class App extends Component {
-// 	render() {
-// 		return <Layout app_name={Config.APPLICATION_NAME} />;
-// 	}
-// }
-
-
-export default App;
+export default styled(App, styles);
