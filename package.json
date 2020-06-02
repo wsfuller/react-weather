@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@fluentui/react": "^7.115.3",
+    "@uifabric/fluent-theme": "^7.1.84",
+    "@uifabric/icons": "^7.3.44",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "google-map-react": "^0.24.0",
