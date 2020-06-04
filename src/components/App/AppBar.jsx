@@ -15,8 +15,8 @@ function AppBar({ toggleTheme, theme }) {
       <div className="app-name">React Weather</div>
       <Toggle
         className={classes.themeToggle}
-        onText={<Icon className={classes.toggleIcon} iconName="Sunny" />}
-        offText={<Icon className={classes.toggleIcon} iconName="ClearNight" />}
+        offText={<Icon className={classes.toggleIcon} iconName="Sunny" />}
+        onText={<Icon className={classes.toggleIcon} iconName="ClearNight" />}
         onChange={() => toggleTheme()}
       />
     </header>
