@@ -1,34 +1,25 @@
 import React from 'react';
-import {
-  loadTheme,
-  classNamesFunction,
-  PrimaryButton,
-  styled,
-} from '@fluentui/react';
+import { loadTheme, classNamesFunction, styled } from '@fluentui/react';
 
 import { styles } from './App.styles';
 import { lightMode, darkMode } from './themes';
-import Navigation from './Navigation';
-
-const getClassNames = classNamesFunction();
+import AppBar from './AppBar';
 
 let currentTheme = lightMode;
 loadTheme(currentTheme);
 
-const toggleTheme = () => {
-  currentTheme = currentTheme === lightMode ? darkMode : lightMode;
-  loadTheme(currentTheme);
-};
+function App({ theme }) {
+  const getClassNames = classNamesFunction();
+  const classes = getClassNames(styles, theme);
 
-function App(props) {
-  const { theme } = props;
-  const classNames = getClassNames(styles, theme);
+  const toggleTheme = () => {
+    currentTheme = currentTheme === lightMode ? darkMode : lightMode;
+    loadTheme(currentTheme);
+  };
 
   return (
-    <div className={classNames.root}>
-      <Navigation />
-      React Weather Application
-      <PrimaryButton text="Change Theme" onClick={() => toggleTheme()} />
+    <div className={classes.root}>
+      <AppBar toggleTheme={toggleTheme} />
     </div>
   );
 }
