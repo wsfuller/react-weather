@@ -1,11 +1,9 @@
 const UserPreferencesStyles = (theme) => {
+  console.log('theme: ', theme);
   return {
     buttonArea: {
       verticalAlign: 'top',
       display: 'inline-block',
-      textAlign: 'center',
-      minWidth: 130,
-      height: 32,
     },
     callout: {
       maxWidth: 300,

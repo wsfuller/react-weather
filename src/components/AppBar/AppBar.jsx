@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNamesFunction, styled } from '@fluentui/react';
+import { classNamesFunction, Stack, styled } from '@fluentui/react';
 
 import AppBarStyles from './AppBar.styles';
 import UserPreferences from '../UserPreferences';
@@ -20,16 +20,18 @@ function AppBar({
 
   return (
     <header className={classes.root}>
-      <div className="app-name">React Weather</div>
-      {/* TODO: Build a settings dropdown that contains Theme, Weather, and Time Toggles. These preferences should be saved in local storage */}
-      <div className={classes.rightActions}>
-        <UserPreferences
-          toggleTheme={toggleTheme}
-          toggleTemperatureScale={toggleTemperatureScale}
-          toggleTimeFormat={toggleTimeFormat}
-        />
-        <AppMoreInfo />
-      </div>
+      <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
+        <div className="app-name">React Weather</div>
+        {/* TODO: Build a settings dropdown that contains Theme, Weather, and Time Toggles. These preferences should be saved in local storage */}
+        <Stack horizontal>
+          <UserPreferences
+            toggleTheme={toggleTheme}
+            toggleTemperatureScale={toggleTemperatureScale}
+            toggleTimeFormat={toggleTimeFormat}
+          />
+          <AppMoreInfo />
+        </Stack>
+      </Stack>
     </header>
   );
 }
