@@ -5,6 +5,7 @@ import { classNamesFunction, styled } from '@fluentui/react';
 
 import AppBarStyles from './AppBar.styles';
 import UserPreferences from '../UserPreferences';
+import AppMoreInfo from '../AppMoreInfo';
 
 const getClassNames = classNamesFunction();
 
@@ -27,7 +28,7 @@ function AppBar({
           toggleTemperatureScale={toggleTemperatureScale}
           toggleTimeFormat={toggleTimeFormat}
         />
-        <div>More</div>
+        <AppMoreInfo />
       </div>
     </header>
   );
