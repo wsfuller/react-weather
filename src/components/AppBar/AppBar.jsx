@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { classNamesFunction, Stack, styled } from '@fluentui/react';
@@ -15,7 +15,6 @@ function AppBar({
   toggleTimeFormat,
   theme,
 }) {
-  const [showCallout, setShowCallout] = useState(true);
   const classes = getClassNames(AppBarStyles, theme);
 
   return (
