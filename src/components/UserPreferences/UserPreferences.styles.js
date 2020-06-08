@@ -1,5 +1,4 @@
 const UserPreferencesStyles = (theme) => {
-  console.log('theme: ', theme);
   return {
     buttonArea: {
       verticalAlign: 'top',
