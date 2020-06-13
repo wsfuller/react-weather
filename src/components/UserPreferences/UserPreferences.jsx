@@ -28,16 +28,13 @@ function UserPreferences(props) {
     toggleTimeFormat,
   } = props;
   const dispatch = useDispatch();
-
+  const userPreferences = useSelector((state) => state.userPreferences);
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(
     false
   );
   const classes = getClassNames(UserPreferencesStyles, theme);
-
   const labelId = useId('callout-label');
   const descriptionId = useId('callout-description');
-
-  const userPreferences = useSelector((state) => state.userPreferences);
 
   useEffect(() => {
     dispatch(getUserThemeMode());
