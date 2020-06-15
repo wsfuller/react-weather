@@ -1,39 +1,44 @@
-function getLocalStorageUserPreferences(preference) {
-  console.log('get local storage user preference: ', preference);
-  const userPreferences = localStorage.getItem('reactWeather');
+import isLocalStorageSupported from '../../utils/isLocalStorageSupported';
+
+function getStoredUserPreferences() {
   return new Promise((resolve, reject) => {
-    console.log('is this working');
-    if (userPreferences) {
+    const hasAccessToLocalStorage = isLocalStorageSupported();
+    if (hasAccessToLocalStorage) {
+      const userPreferences = localStorage.getItem('reactWeather');
       resolve();
     } else {
-      var reason = new Error('error with promise');
+      var reason = new Error('Local Storage is not Supported or Enabled');
       reject(reason);
     }
   });
 }
 
-function getUserTemperatureScale() {
-  console.log('USER PREFERENCES ACTIONS GET USER TEPERATURE SCALE');
+function getUserPreferences() {
   return function (dispatch) {
-    dispatch({ type: 'GET_USER_TEMPERATURE_SCALE' });
+    dispatch({ type: 'GET_USER_PREFERENCES' });
+    getStoredUserPreferences()
+      .then(() => dispatch({ type: 'SUCCESS_GETTING_USER_PREFERENCES' }))
+      .catch((err) => {
+        console.error('There was an error getting User Preferences: ', err);
+        return dispatch({ type: 'FAILED_GETTING_USER_PREFERENCES' });
+      });
   };
 }
 
-function getUserTimeFormat() {
-  console.log('get user time format');
-}
-
-function getUserThemeMode() {
-  console.log('get user theme mode action');
+function toggleUserPreference(preference) {
   return function (dispatch) {
-    console.log('after first dispatch action: ', dispatch);
-    dispatch({ type: 'GET_USER_THEME_MODE' });
-    getLocalStorageUserPreferences('theme')
-      .then(() => console.log('dispatch set_user_theme_mode'))
-      .catch((err) =>
-        console.log('there was an error getting user_theme_mode: ', err)
-      );
+    switch (preference) {
+      case 'themeMode': {
+        return dispatch({ type: 'SET_USER_THEME' });
+      }
+      default: {
+        console.warn(
+          `toggleUserPrefences argument not found. Must be 'temperatureScale', 'timeFormat', or 'themeMode `
+        );
+        return null;
+      }
+    }
   };
 }
 
-export { getUserTemperatureScale, getUserTimeFormat, getUserThemeMode };
+export { getUserPreferences, toggleUserPreference };

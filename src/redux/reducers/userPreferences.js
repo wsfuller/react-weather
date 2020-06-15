@@ -7,10 +7,28 @@ const INITIAL_STATE = {
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'GET_USER_THEME_MODE': {
+    case 'GET_USER_PREFERENCES': {
       return {
         ...state,
         loading: true,
+      };
+    }
+    case 'SUCCESS_GETTING_USER_PREFERENCES': {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+    case 'FAILED_GETTING_USER_PREFERENCES': {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+    case 'SET_USER_THEME': {
+      return {
+        ...state,
+        darkMode: !state.darkMode,
       };
     }
     default: {

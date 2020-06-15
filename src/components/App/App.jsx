@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
+
 import {
   classNamesFunction,
   FontWeights,
@@ -7,37 +9,36 @@ import {
 } from '@fluentui/react';
 
 import { styles } from './App.styles';
-import { lightMode, darkMode } from './themes';
+import { lightTheme, darkTheme } from './themes';
 import AppBar from '../AppBar';
 
-let currentTheme = lightMode;
+let currentTheme = lightTheme;
 loadTheme(currentTheme);
 
 function App({ theme }) {
   const getClassNames = classNamesFunction();
   const classes = getClassNames(styles, Object.assign(theme, { FontWeights }));
-  const [timeFormat, setTimeFormat] = useState('ampm');
+  const { darkMode } = useSelector(
+    (state) => ({
+      darkMode: state.userPreferences.darkMode,
+    }),
+    shallowEqual
+  );
 
-  const toggleTheme = () => {
-    currentTheme = currentTheme === lightMode ? darkMode : lightMode;
+  const toggleAppTheme = () => {
+    currentTheme = darkMode ? darkTheme : lightTheme;
     loadTheme(currentTheme);
   };
 
-  const toggleTemperatureScale = () => {
-    console.log('TOGGLE TEMPERATURE SCALE');
-  };
+  useEffect(() => {
+    toggleAppTheme();
+  }, [darkMode]);
 
-  const toggleTimeFormat = () => {
-    console.log('TOGGLE TIME FORMAT');
-  };
+  console.log('app state changed :', darkMode);
 
   return (
     <div className={classes.root}>
-      <AppBar
-        toggleTheme={toggleTheme}
-        toggleTemperatureScale={toggleTemperatureScale}
-        toggleTimeFormat={toggleTimeFormat}
-      />
+      <AppBar />
     </div>
   );
 }

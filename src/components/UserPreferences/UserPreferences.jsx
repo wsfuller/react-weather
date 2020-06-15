@@ -14,41 +14,28 @@ import { useBoolean, useId } from '@uifabric/react-hooks';
 
 import UserPreferencesStyles from './UserPreferences.styles';
 import {
-  getUserTemperatureScale,
-  getUserThemeMode,
+  getUserPreferences,
+  toggleUserPreference,
 } from '../../redux/actions/userPreferences';
 
 const getClassNames = classNamesFunction();
 
-function UserPreferences(props) {
-  const {
-    theme,
-    toggleTheme,
-    toggleTemperatureScale,
-    toggleTimeFormat,
-  } = props;
+function UserPreferences({ theme }) {
   const dispatch = useDispatch();
   const userPreferences = useSelector((state) => state.userPreferences);
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(
-    false
+    true
   );
   const classes = getClassNames(UserPreferencesStyles, theme);
   const labelId = useId('callout-label');
   const descriptionId = useId('callout-description');
 
   useEffect(() => {
-    dispatch(getUserThemeMode());
+    dispatch(getUserPreferences());
   }, []);
 
   return (
     <Fragment>
-      <Toggle
-        className={classes.themeToggle}
-        defaultChecked={userPreferences.darkMode}
-        offText={<Icon className={classes.toggleIcon} iconName="Sunny" />}
-        onText={<Icon className={classes.toggleIcon} iconName="ClearNight" />}
-        onChange={() => toggleTheme()}
-      />
       <div className={classes.buttonArea}>
         <IconButton
           iconProps={{ iconName: 'PlayerSettings' }}
@@ -75,24 +62,38 @@ function UserPreferences(props) {
           <div className={classes.inner}>
             <Text className={classes.optionLabel}>Temperature Scale:</Text>
             <Toggle
+              disabled={userPreferences.loading}
               className={classes.themeToggle}
               {...(userPreferences.temperatureScale === 'fahrenheit'
                 ? 'defaultChecked'
                 : null)}
               offText="F"
               onText="C"
-              onChange={() => toggleTimeFormat()}
+              onChange={() =>
+                dispatch(toggleUserPreference('temperatureScale'))
+              }
             />
             <hr />
             <Text className={classes.optionLabel}>Time Format:</Text>
             <Toggle
+              disabled={userPreferences.loading}
               className={classes.themeToggle}
               offText="AM/PM"
               onText="24H"
-              onChange={() => toggleTimeFormat()}
+              onChange={() => toggleUserPreference('timeFormat')}
             />
             <hr />
             <Text className={classes.optionLabel}>Dark Mode:</Text>
+            <Toggle
+              disabled={userPreferences.loading}
+              className={classes.themeToggle}
+              defaultChecked={userPreferences.darkMode}
+              offText={<Icon className={classes.toggleIcon} iconName="Sunny" />}
+              onText={
+                <Icon className={classes.toggleIcon} iconName="ClearNight" />
+              }
+              onChange={() => dispatch(toggleUserPreference('themeMode'))}
+            />
           </div>
         </Callout>
       )}
