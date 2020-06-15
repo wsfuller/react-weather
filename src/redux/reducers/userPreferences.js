@@ -25,6 +25,12 @@ function reducer(state = INITIAL_STATE, action) {
         loading: false,
       };
     }
+    case 'SET_USER_TEMPERATURE_SCALE': {
+      return {
+        ...state,
+        temperatureScale: 'celcius',
+      };
+    }
     case 'SET_USER_THEME': {
       return {
         ...state,

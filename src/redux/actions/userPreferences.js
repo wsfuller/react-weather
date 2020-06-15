@@ -28,6 +28,9 @@ function getUserPreferences() {
 function toggleUserPreference(preference) {
   return function (dispatch) {
     switch (preference) {
+      case 'temperatureScale': {
+        return dispatch({ type: 'SET_USER_TEMPERATURE_SCALE' });
+      }
       case 'themeMode': {
         return dispatch({ type: 'SET_USER_THEME' });
       }
