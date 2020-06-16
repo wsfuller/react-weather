@@ -4,7 +4,7 @@ function getStoredUserPreferences() {
   return new Promise((resolve, reject) => {
     const hasAccessToLocalStorage = isLocalStorageSupported();
     if (hasAccessToLocalStorage) {
-      const userPreferences = localStorage.getItem('reactWeather');
+      // const userPreferences = localStorage.getItem('reactWeather');
       resolve();
     } else {
       var reason = new Error('Local Storage is not Supported or Enabled');
@@ -33,6 +33,9 @@ function toggleUserPreference(preference) {
       }
       case 'themeMode': {
         return dispatch({ type: 'SET_USER_THEME' });
+      }
+      case 'timeFormat': {
+        return dispatch({ type: 'SET_USER_TIME_FORMAT' });
       }
       default: {
         console.warn(

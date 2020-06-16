@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -64,6 +65,7 @@ function UserPreferences({ theme }) {
             <Toggle
               disabled={userPreferences.loading}
               className={classes.themeToggle}
+              defaultChecked={userPreferences.temperatureScale === 'celcius'}
               {...(userPreferences.temperatureScale === 'fahrenheit'
                 ? 'defaultChecked'
                 : null)}
@@ -78,9 +80,10 @@ function UserPreferences({ theme }) {
             <Toggle
               disabled={userPreferences.loading}
               className={classes.themeToggle}
+              defaultChecked={userPreferences.timeFormat === '24h'}
               offText="AM/PM"
               onText="24H"
-              onChange={() => toggleUserPreference('timeFormat')}
+              onChange={() => dispatch(toggleUserPreference('timeFormat'))}
             />
             <hr />
             <Text className={classes.optionLabel}>Dark Mode:</Text>

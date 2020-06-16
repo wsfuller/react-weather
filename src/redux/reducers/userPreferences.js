@@ -28,7 +28,14 @@ function reducer(state = INITIAL_STATE, action) {
     case 'SET_USER_TEMPERATURE_SCALE': {
       return {
         ...state,
-        temperatureScale: 'celcius',
+        temperatureScale:
+          state.temperatureScale === 'fahrenheit' ? 'celcius' : 'fahrenheit',
+      };
+    }
+    case 'SET_USER_TIME_FORMAT': {
+      return {
+        ...state,
+        timeFormat: state.timeFormat === 'ampm' ? '24h' : 'ampm',
       };
     }
     case 'SET_USER_THEME': {
