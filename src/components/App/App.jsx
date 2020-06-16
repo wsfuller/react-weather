@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
 import {
@@ -25,16 +25,14 @@ function App({ theme }) {
     shallowEqual
   );
 
-  const toggleAppTheme = () => {
+  const toggleAppTheme = useCallback(() => {
     currentTheme = darkMode ? darkTheme : lightTheme;
     loadTheme(currentTheme);
-  };
+  }, [darkMode]);
 
   useEffect(() => {
     toggleAppTheme();
-  }, [darkMode]);
-
-  console.log('app state changed :', darkMode);
+  }, [darkMode, toggleAppTheme]);
 
   return (
     <div className={classes.root}>
