@@ -1,6 +1,6 @@
 const UserPreferencesStyles = (theme) => {
   return {
-    buttonArea: {
+    userPreferenceButton: {
       verticalAlign: 'top',
       display: 'inline-block',
     },
@@ -17,28 +17,15 @@ const UserPreferencesStyles = (theme) => {
         fontWeight: theme.FontWeights.semilight,
       },
     ],
-    inner: {
+    calloutBody: {
       height: '100%',
       padding: '0 24px 20px',
-    },
-    actions: {
-      position: 'relative',
-      marginTop: 20,
-      width: '100%',
-      whiteSpace: 'nowrap',
     },
     subtext: [
       theme.fonts.small,
       {
         margin: 0,
         fontWeight: theme.FontWeights.semilight,
-      },
-    ],
-    optionLabel: [
-      theme.fonts.small,
-      {
-        display: 'inline-block',
-        marginBottom: 10,
       },
     ],
     themeToggle: {

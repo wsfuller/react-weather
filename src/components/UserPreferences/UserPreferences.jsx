@@ -37,7 +37,7 @@ function UserPreferences({ theme }) {
 
   return (
     <Fragment>
-      <div className={classes.buttonArea}>
+      <div className={classes.userPreferenceButton}>
         <IconButton
           iconProps={{ iconName: 'PlayerSettings' }}
           title="User Settings"
@@ -52,7 +52,7 @@ function UserPreferences({ theme }) {
           ariaDescribedBy={descriptionId}
           role="alertdialog"
           gapSpace={0}
-          target={`.${classes.buttonArea}`}
+          target={`.${classes.userPreferenceButton}`}
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus>
           <div className={classes.header}>
@@ -60,24 +60,23 @@ function UserPreferences({ theme }) {
               User Preferences
             </Text>
           </div>
-          <div className={classes.inner}>
-            <Text className={classes.optionLabel}>Temperature Scale:</Text>
+          <div className={classes.calloutBody}>
             <Toggle
+              label="Temperature Scale"
               disabled={userPreferences.loading}
-              className={classes.themeToggle}
               defaultChecked={userPreferences.temperatureScale === 'celcius'}
               {...(userPreferences.temperatureScale === 'fahrenheit'
                 ? 'defaultChecked'
                 : null)}
-              offText="F"
-              onText="C"
+              offText="°F"
+              onText="°C"
               onChange={() =>
                 dispatch(toggleUserPreference('temperatureScale'))
               }
             />
             <hr />
-            <Text className={classes.optionLabel}>Time Format:</Text>
             <Toggle
+              label="Time Format"
               disabled={userPreferences.loading}
               className={classes.themeToggle}
               defaultChecked={userPreferences.timeFormat === '24h'}
@@ -86,8 +85,8 @@ function UserPreferences({ theme }) {
               onChange={() => dispatch(toggleUserPreference('timeFormat'))}
             />
             <hr />
-            <Text className={classes.optionLabel}>Dark Mode:</Text>
             <Toggle
+              label="Dark Mode"
               disabled={userPreferences.loading}
               className={classes.themeToggle}
               defaultChecked={userPreferences.darkMode}
