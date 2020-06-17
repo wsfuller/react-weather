@@ -18,12 +18,5 @@ export const styles = (theme) => {
       padding: `${theme.spacing.s1} ${theme.spacing.m}`,
       backgroundColor: theme.palette.neutralLight,
     },
-    themeToggle: {
-      marginBottom: '0 !important',
-    },
-    toggleIcon: {
-      position: 'relative',
-      top: 2,
-    },
   };
 };
