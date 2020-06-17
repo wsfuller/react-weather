@@ -5,6 +5,14 @@ const AppBarStyles = (theme) => {
       padding: `${theme.spacing.s1} ${theme.spacing.m}`,
       backgroundColor: theme.palette.neutralLight,
     },
+    appBranding: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    logo: {
+      display: 'inline-block',
+      marginRight: 5,
+    },
   };
 };
 
