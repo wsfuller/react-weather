@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { classNamesFunction, Stack, styled } from '@fluentui/react';
+import { classNamesFunction, Image, Stack, styled } from '@fluentui/react';
 
 import AppBarStyles from './AppBar.styles';
 import UserPreferences from '../UserPreferences';
@@ -18,11 +18,15 @@ function AppBar({ theme }) {
   return (
     <header className={classes.root}>
       <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
-        <div className="app-name">
-          <img src={darkMode ? logoLight : logoDark} alt="React Weather Logo" />
+        <div className={classes.appBranding}>
+          <Image
+            src={darkMode ? logoLight : logoDark}
+            alt="React Weather Logo"
+            className={classes.logo}
+            height={32}
+          />
           ReactWeather
         </div>
-        {/* TODO: Build a settings dropdown that contains Theme, Weather, and Time Toggles. These preferences should be saved in local storage */}
         <Stack horizontal>
           <UserPreferences />
           <AppMoreInfo />
