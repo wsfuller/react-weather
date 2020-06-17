@@ -25,7 +25,7 @@ function UserPreferences({ theme }) {
   const dispatch = useDispatch();
   const userPreferences = useSelector((state) => state.userPreferences);
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(
-    true
+    false
   );
   const classes = getClassNames(UserPreferencesStyles, theme);
   const labelId = useId('callout-label');
