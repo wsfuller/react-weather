@@ -1,28 +1,30 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { IconButton, Stack } from '@fluentui/react';
 
-const menuProps = {
-  items: [
-    {
-      key: 'visitGitHub',
-      text: 'Visit GitHub',
-      iconProps: { iconName: 'GitGraph' },
-      href: 'https://github.com/wsfuller/react-weather',
-      target: '_blank',
-    },
-    {
-      key: 'aboutProject',
-      text: 'About Project',
-      iconProps: { iconName: 'Info' },
-      onClick: () => console.log('does this work click?'),
-    },
-  ],
-  directionalHintFixed: true,
-};
+import toggleModal from '../../redux/actions/modal';
 
-function AppMoreInfo(props) {
-  const { disabled, checked } = props;
+function AppMoreInfo({ disabled, checked }) {
+  const dispatch = useDispatch();
+  const menuProps = {
+    items: [
+      {
+        key: 'visitGitHub',
+        text: 'Visit GitHub',
+        iconProps: { iconName: 'GitGraph' },
+        href: 'https://github.com/wsfuller/react-weather',
+        target: '_blank',
+      },
+      {
+        key: 'aboutProject',
+        text: 'About Project',
+        iconProps: { iconName: 'Info' },
+        onClick: () => dispatch(toggleModal('aboutProject', 'open')),
+      },
+    ],
+    directionalHintFixed: true,
+  };
 
   return (
     <Stack tokens={{ childrenGap: 8 }} horizontal>
