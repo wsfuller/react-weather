@@ -1,3 +1,10 @@
+export const breakpoints = {
+  small: '600',
+  medium: '960',
+  large: '1280',
+  xLarge: '1920',
+};
+
 export const lightTheme = {
   palette: {
     themePrimary: '#148214',

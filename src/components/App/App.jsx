@@ -9,15 +9,19 @@ import {
 } from '@fluentui/react';
 
 import { styles } from './App.styles';
-import { lightTheme, darkTheme } from './themes';
+import { breakpoints, lightTheme, darkTheme } from './themes';
 import AppBar from '../AppBar';
+import Modal from '../Modal';
 
 let currentTheme = lightTheme;
 loadTheme(currentTheme);
 
 function App({ theme }) {
   const getClassNames = classNamesFunction();
-  const classes = getClassNames(styles, Object.assign(theme, { FontWeights }));
+  const classes = getClassNames(
+    styles,
+    Object.assign(theme, { breakpoints, FontWeights })
+  );
   const { darkMode } = useSelector(
     (state) => ({
       darkMode: state.userPreferences.darkMode,
@@ -37,6 +41,7 @@ function App({ theme }) {
   return (
     <div className={classes.root}>
       <AppBar />
+      <Modal />
     </div>
   );
 }
