@@ -1,5 +1,4 @@
 const ModalStyles = (theme) => {
-  console.log('theme: ', theme);
   return {
     root: {
       padding: `${theme.spacing.s1} ${theme.spacing.m}`,
