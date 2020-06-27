@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { classNamesFunction, Modal, styled } from '@fluentui/react';
 
-import { AboutProject, BuiltWith } from './ModalContent';
 import ModalStyles from './Modal.styles';
+import AboutProject from './Content/AboutProject';
+import BuiltWith from './Content/BuiltWith';
 
 const getClassNames = classNamesFunction();
 

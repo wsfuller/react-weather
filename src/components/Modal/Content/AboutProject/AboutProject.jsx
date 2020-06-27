@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from '@fluentui/react';
 
-import ModalHeader from '../ModalHeader';
+import ModalHeader from '../../Header';
 
 function AboutProject() {
   return (

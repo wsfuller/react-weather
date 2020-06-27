@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 
 import { classNamesFunction, IconButton, styled } from '@fluentui/react';
 
-import toggleModal from '../../redux/actions/modal';
+import toggleModal from '../../../redux/actions/modal';
 
-import ModalHeaderStyles from './ModalHeader.styles';
+import ModalHeaderStyles from './Header.styles';
 
 const cancelIcon = { iconName: 'Cancel' };
 const getClassNames = classNamesFunction();
