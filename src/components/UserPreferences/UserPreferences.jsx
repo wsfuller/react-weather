@@ -71,7 +71,12 @@ function UserPreferences({ theme }) {
               offText="°F"
               onText="°C"
               onChange={() =>
-                dispatch(toggleUserPreference('temperatureScale'))
+                dispatch(
+                  toggleUserPreference(
+                    'temperatureScale',
+                    userPreferences.temperatureScale
+                  )
+                )
               }
             />
             <hr />
@@ -82,7 +87,11 @@ function UserPreferences({ theme }) {
               defaultChecked={userPreferences.timeFormat === '24h'}
               offText="AM/PM"
               onText="24H"
-              onChange={() => dispatch(toggleUserPreference('timeFormat'))}
+              onChange={() =>
+                dispatch(
+                  toggleUserPreference('timeFormat', userPreferences.timeFormat)
+                )
+              }
             />
             <hr />
             <Toggle
@@ -94,7 +103,11 @@ function UserPreferences({ theme }) {
               onText={
                 <Icon className={classes.toggleIcon} iconName="ClearNight" />
               }
-              onChange={() => dispatch(toggleUserPreference('themeMode'))}
+              onChange={() =>
+                dispatch(
+                  toggleUserPreference('themeMode', userPreferences.darkMode)
+                )
+              }
             />
           </div>
         </Callout>

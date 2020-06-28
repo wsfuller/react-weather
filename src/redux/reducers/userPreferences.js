@@ -16,32 +16,22 @@ function reducer(state = INITIAL_STATE, action) {
     case 'SUCCESS_GETTING_USER_PREFERENCES': {
       return {
         ...state,
+        ...action.payload,
         loading: false,
       };
     }
-    case 'FAILED_GETTING_USER_PREFERENCES': {
+    case 'FAILED_GETTING_USER_PREFERENCES':
+    case 'FAILED_SETTING_USER_PREFERENCES': {
       return {
         ...state,
         loading: false,
       };
     }
-    case 'SET_USER_TEMPERATURE_SCALE': {
+    case 'SET_USER_PREFERENCE': {
       return {
         ...state,
-        temperatureScale:
-          state.temperatureScale === 'fahrenheit' ? 'celcius' : 'fahrenheit',
-      };
-    }
-    case 'SET_USER_TIME_FORMAT': {
-      return {
-        ...state,
-        timeFormat: state.timeFormat === 'ampm' ? '24h' : 'ampm',
-      };
-    }
-    case 'SET_USER_THEME': {
-      return {
-        ...state,
-        darkMode: !state.darkMode,
+        loading: false,
+        ...action.payload,
       };
     }
     default: {
