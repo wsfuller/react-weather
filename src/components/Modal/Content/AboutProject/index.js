@@ -1,3 +1,3 @@
 import AboutProject from './AboutProject';
 
-export { AboutProject };
+export default AboutProject;

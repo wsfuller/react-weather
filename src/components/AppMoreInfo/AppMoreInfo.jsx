@@ -22,6 +22,12 @@ function AppMoreInfo({ disabled, checked }) {
         iconProps: { iconName: 'Info' },
         onClick: () => dispatch(toggleModal('aboutProject', 'open')),
       },
+      {
+        key: 'builtWidth',
+        text: 'Built With',
+        iconProps: { iconName: 'Toolbox' },
+        onClick: () => dispatch(toggleModal('builtWith', 'open')),
+      },
     ],
     directionalHintFixed: true,
   };

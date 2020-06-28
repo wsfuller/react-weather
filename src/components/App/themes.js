@@ -1,8 +1,10 @@
 export const breakpoints = {
-  small: '600',
-  medium: '960',
-  large: '1280',
-  xLarge: '1920',
+  small: '320',
+  medium: '480',
+  large: '640',
+  xLarge: '1024',
+  xxLarge: '1366',
+  xxxLarge: '1920',
 };
 
 export const lightTheme = {
