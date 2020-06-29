@@ -11,6 +11,7 @@ import {
 import { styles } from './App.styles';
 import { breakpoints, lightTheme, darkTheme } from './themes';
 import AppBar from '../AppBar';
+import SearchBar from '../SearchBar';
 import Modal from '../Modal';
 
 let currentTheme = lightTheme;
@@ -41,6 +42,7 @@ function App({ theme }) {
   return (
     <div className={classes.root}>
       <AppBar />
+      <SearchBar />
       <Modal />
     </div>
   );
