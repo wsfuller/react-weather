@@ -1,8 +1,6 @@
 // import axios from 'axios';
 
 function searchWeather(query) {
-  console.log('process.env: ', process.env);
-  console.log('searchWeather: ', process.env.REACT_APP_WEATHER_API_URL);
   return function (dispatch) {
     dispatch({ type: 'FETCHING_WEATHER' });
     //   axios
