@@ -9,6 +9,11 @@ const SearchBarStyles = (theme) => {
       padding: `${theme.spacing.s1} ${theme.spacing.m}`,
       backgroundColor: theme.palette.neutralLighterAlt,
     },
+    form: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     searchInput: {
       marginRight: theme.spacing.s1,
     },
