@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
   classNamesFunction,
@@ -12,8 +13,9 @@ import {
   TooltipHost,
 } from '@fluentui/react';
 
-import SearchBarStyles from './SearchBar.styles';
 import states from '../../utils/states';
+import SearchBarStyles from './SearchBar.styles';
+import searchWeather from '../../redux/actions/weather';
 
 const stateSelectHeader = {
   key: 'select-a-state',
@@ -26,21 +28,41 @@ const stateOptions = [stateSelectHeader, ...states];
 const getClassNames = classNamesFunction();
 
 function SearchBar({ theme }) {
+  const dispatch = useDispatch();
   const classes = getClassNames(SearchBarStyles, theme);
-  console.log('search bar classes: ', classes);
+  const [stateSelectKey, setStateSelectKey] = useState('select-a-state');
+
+  useEffect(() => {
+    dispatch(searchWeather());
+  }, [dispatch]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('handle submit: ', e);
+  };
+
+  const handleStateChange = useCallback(
+    (event, option) => {
+      setStateSelectKey(option.key);
+    },
+    [setStateSelectKey]
+  );
+
   return (
     <div className={classes.root}>
-      <SearchBox
-        className={classes.searchInput}
-        placeholder="Enter City Name"
-      />
-      <ComboBox
-        className={classes.stateCombobox}
-        autoComplete={'on'}
-        options={stateOptions}
-        selectedKey={'select-a-state'}
-      />
-      <PrimaryButton text="Search" onClick={() => console.log('search')} />
+      <form className={classes.form} onSubmit={() => handleSubmit()}>
+        <SearchBox
+          className={classes.searchInput}
+          placeholder="Enter City Name"
+        />
+        <ComboBox
+          className={classes.stateCombobox}
+          options={stateOptions}
+          selectedKey={stateSelectKey}
+          onChange={handleStateChange}
+        />
+        <PrimaryButton text="Search" type="submit" />
+      </form>
       <span className={classes.divider}>OR</span>
       <TooltipHost
         content="Use Current Location"
