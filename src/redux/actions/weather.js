@@ -1,19 +1,23 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-function searchWeather(query) {
+function searchWeather(city, state) {
+  const countryCode = 840;
   return function (dispatch) {
-    dispatch({ type: 'FETCHING_WEATHER' });
-    //   axios
-    //     .get(`${API_URL}q=${query}&appid=${API_KEY}`)
-    //     .then((response) => {
-    //       dispatch({
-    //         type: 'FETCHED_WEATHER_SUCCESSFUL',
-    //         payload: response.data,
-    //       });
-    //     })
-    //     .catch((err) => {
-    //       dispatch({ type: 'FETCHED_WEATHER_REJECTED', payload: err });
-    //     });
+    dispatch({ type: 'GET_WEATHER' });
+    axios
+      .get(
+        `${process.env.REACT_APP_WEATHER_API_URL}/data/2.5/weather?q=${city},${state},${countryCode}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      )
+      .then((response) => {
+        console.log('search weather response: ', response);
+        dispatch({
+          type: 'GET_WEATHER_SUCCESSFUL',
+          payload: response.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({ type: 'GET_WEATHER_FAILED', payload: err });
+      });
   };
 }
 
