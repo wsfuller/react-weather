@@ -13,6 +13,7 @@ import {
   SelectableOptionMenuItemType,
   // TooltipHost,
 } from '@fluentui/react';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 import states from '../../utils/states';
 import SearchBarStyles from './SearchBar.styles';
@@ -20,7 +21,7 @@ import searchWeather from '../../redux/actions/weather';
 
 const stateSelectHeader = {
   key: 'select-a-state',
-  text: 'Select State',
+  text: 'State Select',
   itemType: SelectableOptionMenuItemType.Header,
   disabled: true,
 };
@@ -87,7 +88,7 @@ function SearchBar({ theme }) {
         <SearchBox
           name="city"
           className={classes.searchInput}
-          placeholder="Enter City Name"
+          placeholder="City Name"
           onChange={handleCityChange}
         />
         <ComboBox
@@ -97,7 +98,12 @@ function SearchBar({ theme }) {
           selectedKey={stateSelectKey}
           onChange={handleStateChange}
         />
-        <PrimaryButton text="Search" type="submit" disabled={disabled} />
+        <PrimaryButton
+          className={classes.submitButton}
+          text={<Icon className={classes.toggleIcon} iconName="Search" />}
+          type="submit"
+          disabled={disabled}
+        />
       </form>
       {/* <span className={classes.divider}>OR</span>
       <TooltipHost

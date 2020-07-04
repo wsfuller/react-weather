@@ -15,11 +15,20 @@ const SearchBarStyles = (theme) => {
       justifyContent: 'center',
     },
     searchInput: {
+      maxWidth: '40%',
       marginRight: theme.spacing.s1,
     },
     stateCombobox: {
       maxWidth: 115,
       marginRight: theme.spacing.s1,
+    },
+    submitButton: {
+      minWidth: 'auto',
+      selectors: {
+        [`@media (min-width: ${theme.breakpoints.medium}px)`]: {
+          minWidth: 80,
+        },
+      },
     },
     divider: {
       margin: `0 ${theme.spacing.m}`,
