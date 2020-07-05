@@ -8,6 +8,13 @@ const AppBarStyles = (theme) => {
     appBranding: {
       display: 'flex',
       alignItems: 'center',
+      color: `${theme.palette.neutralPrimary}`,
+      selectors: {
+        ':hover': {
+          color: `${theme.palette.neutralPrimary}`,
+          textDecoration: 'none',
+        },
+      },
     },
     logo: {
       display: 'inline-block',

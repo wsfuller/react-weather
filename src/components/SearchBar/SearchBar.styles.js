@@ -1,5 +1,4 @@
 const SearchBarStyles = (theme) => {
-  console.log('theme breh: ', theme);
   return {
     root: {
       display: 'flex',
