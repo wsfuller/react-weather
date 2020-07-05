@@ -8,6 +8,8 @@ import {
   ComboBox,
   // DirectionalHint,
   // IconButton,
+  Link,
+  MessageBar,
   PrimaryButton,
   SearchBox,
   SelectableOptionMenuItemType,
@@ -115,6 +117,16 @@ function SearchBar({ theme }) {
           ariaLabel="Current Location"
         />
       </TooltipHost> */}
+      {weather.error && (
+        <MessageBar
+          className={classes.errorMessage}
+          messageBarType={1}
+          isMultiline={false}
+          dismissButtonAriaLabel="Close">
+          {`${weather.error.message}, please try again later`}
+          <Link href="/help">Need help?</Link>
+        </MessageBar>
+      )}
     </div>
   );
 }

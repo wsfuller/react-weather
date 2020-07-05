@@ -3,16 +3,18 @@ const SearchBarStyles = (theme) => {
   return {
     root: {
       display: 'flex',
+      flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'relative',
       width: '100%',
-      padding: `${theme.spacing.s1} ${theme.spacing.m}`,
       backgroundColor: theme.palette.neutralLighterAlt,
     },
     form: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      padding: `${theme.spacing.s1} ${theme.spacing.m}`,
     },
     searchInput: {
       maxWidth: '40%',
@@ -32,6 +34,10 @@ const SearchBarStyles = (theme) => {
     },
     divider: {
       margin: `0 ${theme.spacing.m}`,
+    },
+    errorMessage: {
+      position: 'absolute',
+      top: '100%',
     },
   };
 };

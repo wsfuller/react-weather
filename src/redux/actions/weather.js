@@ -15,8 +15,8 @@ function searchWeather(city, state) {
           payload: response.data,
         });
       })
-      .catch((err) => {
-        dispatch({ type: 'GET_WEATHER_FAILED', payload: err });
+      .catch((error) => {
+        dispatch({ type: 'GET_WEATHER_FAILED', payload: error });
       });
   };
 }

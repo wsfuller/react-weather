@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   weather: {},
   loading: false,
-  error: false,
+  error: null,
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -10,6 +10,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     }
     case 'GET_WEATHER_SUCCESSFUL': {
