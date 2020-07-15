@@ -1,7 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { classNamesFunction, Image, Stack, styled } from '@fluentui/react';
+import {
+  classNamesFunction,
+  styled,
+  Image,
+  Link,
+  Stack,
+} from '@fluentui/react';
 
 import AppBarStyles from './AppBar.styles';
 import UserPreferences from '../UserPreferences';
@@ -18,7 +24,7 @@ function AppBar({ theme }) {
   return (
     <header className={classes.root}>
       <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
-        <div className={classes.appBranding}>
+        <Link href="/" className={classes.appBranding}>
           <Image
             src={darkMode ? logoLight : logoDark}
             alt="React Weather Logo"
@@ -26,7 +32,7 @@ function AppBar({ theme }) {
             height={32}
           />
           ReactWeather
-        </div>
+        </Link>
         <Stack horizontal>
           <UserPreferences />
           <AppMoreInfo />
