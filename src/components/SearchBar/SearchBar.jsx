@@ -46,8 +46,6 @@ function SearchBar({ theme }) {
   const [city, setCity] = useState(INITIAL_CITY);
   const [stateSelectKey, setStateSelectKey] = useState(INITIAL_STATE);
   const [disabled, setDisabled] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   console.log('WEATHER: ', weather);
 
@@ -65,6 +63,7 @@ function SearchBar({ theme }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDisabled(true);
     dispatch(searchWeather(city, stateSelectKey));
   };
 
