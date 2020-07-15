@@ -47,8 +47,6 @@ function SearchBar({ theme }) {
   const [stateSelectKey, setStateSelectKey] = useState(INITIAL_STATE);
   const [disabled, setDisabled] = useState(true);
 
-  console.log('WEATHER: ', weather);
-
   // useEffect(() => {
   //   dispatch(searchWeather());
   // }, []);
