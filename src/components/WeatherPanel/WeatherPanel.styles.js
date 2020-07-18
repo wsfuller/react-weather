@@ -6,10 +6,19 @@ const WeatherPanelStyles = (theme) => {
       left: 0,
       display: 'flex',
       flexDirection: 'column',
-      width: '20vw',
+      maxWidth: '30vw',
       height: '100%',
       padding: `${theme.spacing.l1} ${theme.spacing.m}`,
       backgroundColor: theme.palette.neutralLighterAlt,
+    },
+    location: {
+      marginTop: 0,
+      fontWeight: theme.FontWeights.light,
+    },
+    currentTemperature: {
+      marginTop: 0,
+      fontWeight: theme.FontWeights.light,
+      textAlign: 'center',
     },
   };
 };
