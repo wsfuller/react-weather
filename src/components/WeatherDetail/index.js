@@ -1,3 +1,4 @@
-import WeatherDetail from './WeatherDetail';
+import DetailBar from './DetailBar';
+import DetailCard from './DetailCard';
 
-export default WeatherDetail;
+export { DetailBar, DetailCard };
