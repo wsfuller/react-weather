@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   weather: {},
-  loading: false,
+  loading: true,
   error: null,
 };
 
