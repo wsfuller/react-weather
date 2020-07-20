@@ -20,13 +20,21 @@ export function convertClouds(value) {
   return clouds;
 }
 
-export function convertVisibility(value) {
-  const visibility = Math.floor(value / 1000);
+export function convertWind(value) {
+  const wind = Math.ceil(value * 2.237);
 
-  return visibility;
+  return `${wind} mph`;
 }
 
-export function convertTimeOfSun(time) {
-  const sunset = new Date(time * 1000);
-  const sunrise = new Date(time * 1000);
+export function convertVisibility(value) {
+  const visibility = Math.floor(value / 1609);
+
+  return `${visibility} mi`;
+}
+
+export function convertTimeForSun(time) {
+  const date = new Date(parseInt(time * 1000));
+  const localeSpecificTime = date.toLocaleTimeString();
+
+  return localeSpecificTime.replace(/:\d+ /, ' ');
 }
