@@ -7,17 +7,20 @@ import {
   Icon,
   Spinner,
   SpinnerSize,
+  Stack,
   Text,
 } from '@fluentui/react';
 
 import WeatherPanelStyles from './WeatherPanel.styles';
-import { DetailBar } from '../WeatherDetail';
+import { DetailBar, DetailCard } from '../WeatherDetail';
 
 import {
   convertTemperature,
   convertHumidity,
   convertClouds,
   convertVisibility,
+  convertWind,
+  convertTimeForSun,
 } from '../../utils/conversions';
 
 const getClassNames = classNamesFunction();
@@ -36,7 +39,7 @@ function WeatherPanel({ theme }) {
       <Fragment>
         <Text variant="xxLarge" className={classes.location}>
           <Icon iconName="MapPin" className={classes.locationIcon} />
-          {weather.name}, CA
+          {weather.name}, WA
         </Text>
         <Text variant="mega" className={classes.currentTemperature}>
           <span
@@ -66,6 +69,34 @@ function WeatherPanel({ theme }) {
           textLeft={`${weather.clouds.all}&#37;`}
           description="Clouds"
           fill={convertClouds(weather.clouds.all)}
+        />
+        <DetailCard
+          text={convertVisibility(weather.visibility)}
+          label="Visibility"
+        />
+        <DetailCard text={convertWind(weather.wind.speed)} label="Wind" />
+        <DetailCard
+          text={convertTimeForSun(weather.sys.sunrise)}
+          label={
+            <Stack
+              horizontal
+              verticalAlign="center"
+              tokens={{ childrenGap: 5 }}>
+              <Icon iconName="upload" /> <span>Sunrise</span>
+            </Stack>
+          }
+        />
+        <DetailCard
+          text={convertTimeForSun(weather.sys.sunset)}
+          label={
+            <Stack
+              horizontal
+              verticalAlign="center"
+              tokens={{ childrenGap: 5 }}>
+              <Icon iconName="download" />
+              <span>Sunset</span>
+            </Stack>
+          }
         />
       </Fragment>
     );

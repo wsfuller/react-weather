@@ -19,7 +19,7 @@ const WeatherPanelStyles = (theme) => {
     },
     locationIcon: {
       marginRight: theme.spacing.s2,
-      fontSize: '70%',
+      fontSize: '60%',
     },
     currentTemperature: {
       marginTop: 0,
