@@ -5,7 +5,11 @@ const DetailCardStyles = (theme) => {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: theme.spacing.m,
+      padding: theme.spacing.m,
+      border: `1px solid ${theme.palette.neutralLight}`,
+    },
+    text: {
+      marginBottom: theme.spacing.s1,
     },
   };
 };
