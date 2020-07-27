@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { classNamesFunction, styled, Icon, Text } from '@fluentui/react';
+import { classNamesFunction, styled, Text } from '@fluentui/react';
 
 import DetailCardStyles from './DetailCard.styles';
 

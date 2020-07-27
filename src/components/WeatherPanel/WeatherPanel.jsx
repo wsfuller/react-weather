@@ -1,10 +1,16 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
+import {
+  WiAlien,
+  WiStrongWind,
+  WiSunrise,
+  WiSunset,
+} from 'weather-icons-react';
 
 import {
   classNamesFunction,
   styled,
-  Icon,
   Spinner,
   SpinnerSize,
   Stack,
@@ -27,18 +33,16 @@ const getClassNames = classNamesFunction();
 
 function WeatherPanel({ theme }) {
   const classes = getClassNames(WeatherPanelStyles, theme);
-  const { weather, loading, error } = useSelector((state) => state.weather);
+  const { weather, error } = useSelector((state) => state.weather);
   const { temperatureScale } = useSelector((state) => state.userPreferences);
 
   let content;
 
-  if (loading) {
-    content = <Spinner size={SpinnerSize.large} />;
-  } else {
+  if (!isEmpty(weather)) {
     content = (
       <Fragment>
         <Text variant="xxLarge" className={classes.location}>
-          <Icon iconName="MapPin" className={classes.locationIcon} />
+          {/* <Icon iconName="MapPin" className={classes.locationIcon} /> */}
           {weather.name}, WA
         </Text>
         <Text variant="mega" className={classes.currentTemperature}>
@@ -72,9 +76,28 @@ function WeatherPanel({ theme }) {
         />
         <DetailCard
           text={convertVisibility(weather.visibility)}
-          label="Visibility"
+          label={
+            <Stack
+              horizontal
+              verticalAlign="center"
+              tokens={{ childrenGap: 5 }}>
+              <WiAlien size={24} />
+              <span>Visibility</span>
+            </Stack>
+          }
         />
-        <DetailCard text={convertWind(weather.wind.speed)} label="Wind" />
+        <DetailCard
+          text={convertWind(weather.wind.speed)}
+          label={
+            <Stack
+              horizontal
+              verticalAlign="center"
+              tokens={{ childrenGap: 5 }}>
+              <WiStrongWind size={24} />
+              <span>Wind</span>
+            </Stack>
+          }
+        />
         <DetailCard
           text={convertTimeForSun(weather.sys.sunrise)}
           label={
@@ -82,7 +105,8 @@ function WeatherPanel({ theme }) {
               horizontal
               verticalAlign="center"
               tokens={{ childrenGap: 5 }}>
-              <Icon iconName="upload" /> <span>Sunrise</span>
+              <WiSunrise size={24} />
+              <span>Sunrise</span>
             </Stack>
           }
         />
@@ -93,13 +117,17 @@ function WeatherPanel({ theme }) {
               horizontal
               verticalAlign="center"
               tokens={{ childrenGap: 5 }}>
-              <Icon iconName="download" />
+              <WiSunset size={24} />
               <span>Sunset</span>
             </Stack>
           }
         />
       </Fragment>
     );
+  } else if (error) {
+    content = <Text>Error Fetching Weather Details</Text>;
+  } else {
+    content = <Spinner size={SpinnerSize.large} />;
   }
 
   return <div className={classes.root}>{content}</div>;
