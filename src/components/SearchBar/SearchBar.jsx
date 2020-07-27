@@ -49,7 +49,7 @@ function SearchBar({ theme }) {
 
   useEffect(() => {
     dispatch(searchWeather());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const hasCity = city;
