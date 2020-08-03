@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   weather: {},
+  state: 'WA',
   loading: true,
   error: null,
 };
