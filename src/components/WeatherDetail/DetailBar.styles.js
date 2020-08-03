@@ -5,6 +5,7 @@ const DetailBarStyles = (theme) => {
       alignItems: 'center',
       justifyContent: 'space-between',
       marginBottom: theme.spacing.m,
+      padding: `0 ${theme.spacing.s1}`,
     },
     indicator: {
       position: 'relative',
