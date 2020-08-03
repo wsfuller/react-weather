@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  temperatureScale: 'fahrenheit',
+  systemOfMeasurement: 'imperial',
   timeFormat: 'ampm',
   darkMode: false,
   loading: false,

@@ -62,19 +62,19 @@ function UserPreferences({ theme }) {
           </div>
           <div className={classes.calloutBody}>
             <Toggle
-              label="Temperature Scale"
+              label="System of Measurement"
               disabled={userPreferences.loading}
-              defaultChecked={userPreferences.temperatureScale === 'celcius'}
-              {...(userPreferences.temperatureScale === 'fahrenheit'
+              defaultChecked={userPreferences.systemOfMeasurement === 'metric'}
+              {...(userPreferences.systemOfMeasurement === 'imperial'
                 ? 'defaultChecked'
                 : null)}
-              offText="°F"
-              onText="°C"
+              offText="Imperial (°F)"
+              onText="Metric (°C)"
               onChange={() =>
                 dispatch(
                   toggleUserPreference(
-                    'temperatureScale',
-                    userPreferences.temperatureScale
+                    'systemOfMeasurement',
+                    userPreferences.systemOfMeasurement
                   )
                 )
               }
