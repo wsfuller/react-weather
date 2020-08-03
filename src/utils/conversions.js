@@ -1,38 +1,24 @@
-export function convertTemperature(temperature, temperatureScale) {
+export function convertKelvinTemperatureTo(temperature, temperatureScale) {
   const fahrenheit = Math.floor(((temperature - 273.15) * 9) / 5 + 32);
   const celcius = Math.floor(temperature - 273.15);
 
-  if (temperatureScale === 'celcius') {
-    return `${celcius}&deg;C`;
-  }
-  return `${fahrenheit}&deg;F`;
+  return temperatureScale === 'celcius' ? celcius : fahrenheit;
 }
 
-export function convertHumidity(value) {
-  const humidity = value / 100;
+export function convertWind(value, unitType) {
+  const milesPerHour = Math.ceil(value * 2.237);
+  const metersPerSecond = Math.ceil(value / 2.237);
 
-  return humidity;
-}
-
-export function convertClouds(value) {
-  const clouds = value / 100;
-
-  return clouds;
-}
-
-export function convertWind(value) {
-  const wind = Math.ceil(value * 2.237);
-
-  return `${wind} mph`;
+  return unitType === 'metric' ? metersPerSecond : milesPerHour;
 }
 
 export function convertVisibility(value) {
   const visibility = Math.floor(value / 1609);
 
-  return `${visibility} mi`;
+  return visibility;
 }
 
-export function convertTimeForSun(time) {
+export function convertTimeForSun(time, unitType) {
   const date = new Date(parseInt(time * 1000));
   const localeSpecificTime = date.toLocaleTimeString();
 
