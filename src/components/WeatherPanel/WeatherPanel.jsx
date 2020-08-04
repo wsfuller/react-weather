@@ -10,6 +10,7 @@ import {
   SpinnerSize,
   Stack,
   Text,
+  BaseFloatingPicker,
 } from '@fluentui/react';
 
 import WeatherPanelStyles from './WeatherPanel.styles';
@@ -39,11 +40,22 @@ function WeatherPanel({ theme }) {
   } else if (error) {
     content = <Text>Error Fetching Weather Details</Text>;
   } else {
-    content = <Spinner size={SpinnerSize.large} />;
+    content = (
+      <Spinner
+        size={SpinnerSize.large}
+        label="Loading weather details..."
+        style={{
+          marginTop: theme.spacing.m,
+        }}
+      />
+    );
   }
 
   return (
-    <div className={`${classes.root} ${!showPanel && classes.panelClosed}`}>
+    <div
+      className={`${classes.root} ${
+        showPanel ? classes.panelExpanded : classes.panelCollapsed
+      }`}>
       <div className={classes.panelContent}>{content}</div>
       <Stack>
         <Stack.Item align="end">
