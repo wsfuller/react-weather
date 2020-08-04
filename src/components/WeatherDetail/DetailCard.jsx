@@ -1,28 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { classNamesFunction, styled, Text } from '@fluentui/react';
+import { classNamesFunction, styled, Stack, Text } from '@fluentui/react';
 
 import DetailCardStyles from './DetailCard.styles';
 
 const getClassNames = classNamesFunction();
 
-function DetailCard({ theme, text, label }) {
+function DetailCard({ borderRight, borderBottom, icon, label, value, theme }) {
   const classes = getClassNames(DetailCardStyles, theme);
 
   return (
-    <div className={classes.root}>
-      <Text variant="mediumPlus" className={classes.text}>
-        {text}
+    <Stack.Item
+      className={`${classes.root} ${borderRight && classes.borderRight} ${
+        borderBottom && classes.borderBottom
+      }`}>
+      <Text variant="large" className={classes.value}>
+        {value}
       </Text>
-      <Text variant="small">{label}</Text>
-    </div>
+      <Stack.Item className={classes.label}>
+        <div className={classes.icon}>{icon}</div>
+        <Text>{label}</Text>
+      </Stack.Item>
+    </Stack.Item>
   );
 }
 
 DetailCard.propTypes = {
-  text: PropTypes.string.isRequired,
-  label: PropTypes.node.isRequired,
+  value: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+  borderRight: PropTypes.bool,
+  borderBottom: PropTypes.bool,
+};
+
+DetailCard.defaultProptypes = {
+  borderRight: false,
+  borderBottom: false,
 };
 
 export default styled(DetailCard, DetailCardStyles);

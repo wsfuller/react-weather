@@ -26,8 +26,6 @@ const getClassNames = classNamesFunction();
 function ExpandedContent({ theme, weatherDetails }) {
   const classes = getClassNames(ExpandedContentStyles, theme);
   const { systemOfMeasurement } = useSelector((state) => state.userPreferences);
-  console.log('WEATHER DETAILS FROM EXPANDED CONTENT: ', weatherDetails);
-
   const {
     city,
     clouds,
@@ -97,49 +95,33 @@ function ExpandedContent({ theme, weatherDetails }) {
           fill={clouds.all / 100}
         />
       </Stack.Item>
-
       <Stack horizontal>
-        <Stack.Item
-          className={`${classes.detailCard} ${classes.borderRight} ${classes.borderBottom}`}>
-          <Text variant="large" className={classes.value}>
-            {VISIBILITY}
-            {VISIBILITY_ABBRIVATION}
-          </Text>
-          <Stack.Item className={classes.label}>
-            <Icon iconName="RedEye" />
-            <Text>Visibility</Text>
-          </Stack.Item>
-        </Stack.Item>
-        <Stack.Item className={`${classes.detailCard} ${classes.borderBottom}`}>
-          <Text variant="large" className={classes.value}>
-            {WIND}
-            {WIND_ABBRIVATION}
-          </Text>
-          <Stack.Item className={classes.label}>
-            <WiStrongWind size={24} />
-            <Text>Wind</Text>
-          </Stack.Item>
-        </Stack.Item>
+        <DetailCard
+          icon={<Icon iconName="RedEye" />}
+          value={`${VISIBILITY}${VISIBILITY_ABBRIVATION}`}
+          label="Visibility"
+          borderRight
+          borderBottom
+        />
+        <DetailCard
+          icon={<WiStrongWind size={24} />}
+          value={`${WIND}${WIND_ABBRIVATION}`}
+          label="Wind"
+          borderBottom
+        />
       </Stack>
       <Stack horizontal>
-        <Stack.Item className={`${classes.detailCard} ${classes.borderRight}`}>
-          <Text variant="large" className={classes.value}>
-            {sunrise}
-          </Text>
-          <Stack.Item className={classes.label}>
-            <WiSunrise size={24} />
-            <Text>Sunrise</Text>
-          </Stack.Item>
-        </Stack.Item>
-        <Stack.Item className={classes.detailCard}>
-          <Text variant="large" className={classes.value}>
-            {sunset}
-          </Text>
-          <Stack.Item className={classes.label}>
-            <WiSunset size={24} />
-            <Text>Sunset</Text>
-          </Stack.Item>
-        </Stack.Item>
+        <DetailCard
+          icon={<WiSunrise size={24} />}
+          value={sunrise}
+          label="Sunrise"
+          borderRight
+        />
+        <DetailCard
+          icon={<WiSunset size={24} />}
+          value={sunset}
+          label="Sunset"
+        />
       </Stack>
     </Stack>
   );
