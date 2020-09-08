@@ -27,10 +27,9 @@ function ExpandedContent({ theme, weatherDetails }) {
   const classes = getClassNames(ExpandedContentStyles, theme);
   const { systemOfMeasurement } = useSelector((state) => state.userPreferences);
   const {
-    city,
+    location: { city, state },
     clouds,
     humidity,
-    state,
     sunrise,
     sunset,
     temperature,

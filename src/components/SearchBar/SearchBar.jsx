@@ -19,7 +19,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 
 import states from '../../utils/states';
 import SearchBarStyles from './SearchBar.styles';
-import searchWeather from '../../redux/actions/weather';
+import getWeather from '../../redux/actions/weather';
 
 const stateSelectHeader = {
   key: 'select-a-state',
@@ -48,7 +48,7 @@ function SearchBar({ theme }) {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    dispatch(searchWeather());
+    dispatch(getWeather('seattle', 'washington'));
   }, [dispatch]);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function SearchBar({ theme }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setDisabled(true);
-    dispatch(searchWeather(city, stateSelectKey));
+    dispatch(getWeather(city, stateSelectKey));
   };
 
   const handleCityChange = (e) => {

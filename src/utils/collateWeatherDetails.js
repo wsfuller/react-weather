@@ -7,45 +7,47 @@ import {
   convertTimeForSun,
 } from './conversions';
 
-export function collateWeatherDetails(weather, state) {
+export function collateWeatherDetails(forcast, location) {
   const weatherDetails = {
-    city: weather.name,
-    state: state,
-    clouds: weather.clouds,
-    humidity: weather.main.humidity,
+    location: {
+      city: location.city,
+      state: location.state,
+    },
+    clouds: forcast.clouds,
+    humidity: forcast.main.humidity,
     temperature: {
       current: {
-        fahrenheit: convertKelvinTemperatureTo(weather.main.temp, 'imperial'),
-        celcius: convertKelvinTemperatureTo(weather.main.temp, 'celcius'),
+        fahrenheit: convertKelvinTemperatureTo(forcast.main.temp, 'imperial'),
+        celcius: convertKelvinTemperatureTo(forcast.main.temp, 'celcius'),
       },
       high: {
         fahrenheit: convertKelvinTemperatureTo(
-          weather.main.temp_max,
+          forcast.main.temp_max,
           'imperial'
         ),
-        celcius: convertKelvinTemperatureTo(weather.main.temp_max, 'celcius'),
+        celcius: convertKelvinTemperatureTo(forcast.main.temp_max, 'celcius'),
       },
       low: {
         fahrenheit: convertKelvinTemperatureTo(
-          weather.main.temp_min,
+          forcast.main.temp_min,
           'imperial'
         ),
-        celcius: convertKelvinTemperatureTo(weather.main.temp_min, 'celcius'),
+        celcius: convertKelvinTemperatureTo(forcast.main.temp_min, 'celcius'),
       },
     },
     visibility: {
-      imperial: convertVisibility(weather.visibility, 'imperial'),
-      metric: weather.visibility,
+      imperial: convertVisibility(forcast.visibility, 'imperial'),
+      metric: forcast.visibility,
     },
     wind: {
       speed: {
-        imperial: convertWind(weather.wind.speed, 'imperial'),
-        metric: Math.ceil(weather.wind.speed),
+        imperial: convertWind(forcast.wind.speed, 'imperial'),
+        metric: Math.ceil(forcast.wind.speed),
       },
-      degree: weather.wind.deg,
+      degree: forcast.wind.deg,
     },
-    sunrise: convertTimeForSun(weather.sys.sunrise),
-    sunset: convertTimeForSun(weather.sys.sunset),
+    sunrise: convertTimeForSun(forcast.sys.sunrise),
+    sunset: convertTimeForSun(forcast.sys.sunset),
   };
 
   return weatherDetails;
@@ -71,7 +73,10 @@ export const UNITS_OF_MEASUREMENT = {
 };
 
 export const weatherDetailsPropTypes = {
-  city: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    city: PropTypes.string,
+    state: PropTypes.string,
+  }).isRequired,
   clouds: PropTypes.shape({
     all: PropTypes.number,
   }).isRequired,

@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
-  weather: {},
-  state: 'WA',
+  forecast: {},
+  location: '',
   loading: true,
   error: null,
 };
@@ -17,7 +17,8 @@ export default function reducer(state = INITIAL_STATE, action) {
     case 'GET_WEATHER_SUCCESSFUL': {
       return {
         ...state,
-        weather: action.payload,
+        forecast: action.payload.forecast,
+        location: action.payload.location,
         loading: false,
       };
     }

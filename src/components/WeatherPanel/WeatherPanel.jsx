@@ -25,12 +25,12 @@ const getClassNames = classNamesFunction();
 function WeatherPanel({ theme }) {
   const classes = getClassNames(WeatherPanelStyles, theme);
   const [showPanel, setShowPanel] = useState(true);
-  const { state, weather, error } = useSelector((state) => state.weather);
+  const { forecast, location, error } = useSelector((state) => state.weather);
 
   let content;
 
-  if (!isEmpty(weather)) {
-    const weatherDetails = collateWeatherDetails(weather, state);
+  if (!isEmpty(forecast)) {
+    const weatherDetails = collateWeatherDetails(forecast, location);
 
     content = showPanel ? (
       <ExpandedContent weatherDetails={weatherDetails} />
