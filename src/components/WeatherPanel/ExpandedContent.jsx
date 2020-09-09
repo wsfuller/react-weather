@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import {
-  WiHumidity,
-  WiStrongWind,
-  WiSunrise,
-  WiSunset,
-  WiThermometer,
-  WiThermometerExterior,
-} from 'weather-icons-react';
+import { WiStrongWind, WiSunrise, WiSunset } from 'weather-icons-react';
 
 import { classNamesFunction, styled, Stack, Text } from '@fluentui/react';
 import { Icon } from '@fluentui/react/lib/Icon';

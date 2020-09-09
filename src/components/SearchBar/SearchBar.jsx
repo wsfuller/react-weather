@@ -1,19 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
 
 import {
   classNamesFunction,
   styled,
   ComboBox,
-  // DirectionalHint,
-  // IconButton,
   Link,
   MessageBar,
   PrimaryButton,
   SearchBox,
   SelectableOptionMenuItemType,
-  // TooltipHost,
 } from '@fluentui/react';
 import { Icon } from '@fluentui/react/lib/Icon';
 
@@ -31,7 +29,7 @@ const stateOptions = [stateSelectHeader, ...states];
 
 const getClassNames = classNamesFunction();
 
-const INITIAL_CITY = null;
+const INITIAL_CITY = '';
 const INITIAL_STATE = 'select-a-state';
 
 function SearchBar({ theme }) {
@@ -47,9 +45,9 @@ function SearchBar({ theme }) {
   const [stateSelectKey, setStateSelectKey] = useState(INITIAL_STATE);
   const [disabled, setDisabled] = useState(true);
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(getWeather('seattle', 'washington'));
-  }, [dispatch]);
+  }, [dispatch]);*/
 
   useEffect(() => {
     const hasCity = city;
@@ -58,6 +56,14 @@ function SearchBar({ theme }) {
       setDisabled(false);
     }
   }, [city, stateSelectKey]);
+
+  useEffect(() => {
+    const { forecast, error, loading } = weather;
+    if (!isEmpty(forecast) && !error && !loading) {
+      setCity(INITIAL_CITY);
+      setStateSelectKey(INITIAL_STATE);
+    }
+  }, [weather]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,6 +95,7 @@ function SearchBar({ theme }) {
           className={classes.searchInput}
           placeholder="City Name"
           onChange={handleCityChange}
+          value={city}
         />
         <ComboBox
           name="state-select"
@@ -104,16 +111,6 @@ function SearchBar({ theme }) {
           disabled={disabled}
         />
       </form>
-      {/* <span className={classes.divider}>OR</span>
-      <TooltipHost
-        content="Use Current Location"
-        directionalHint={DirectionalHint.bottomCenter}>
-        <IconButton
-          iconProps={{ iconName: 'MapPin' }}
-          title="Current Location"
-          ariaLabel="Current Location"
-        />
-      </TooltipHost> */}
       {weather.error && (
         <MessageBar
           className={classes.errorMessage}

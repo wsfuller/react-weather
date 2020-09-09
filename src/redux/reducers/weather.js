@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   forecast: {},
   location: '',
-  loading: true,
+  loading: false,
   error: null,
 };
 
