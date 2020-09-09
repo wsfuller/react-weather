@@ -52,15 +52,17 @@ function getUserPreferences() {
 function toggleUserPreference(preference, value) {
   return function (dispatch) {
     switch (preference) {
-      case 'temperatureScale': {
-        const temperatureScale =
-          value === 'fahrenheit' ? 'celcius' : 'fahrenheit';
+      case 'systemOfMeasurement': {
+        const systemOfMeasurement =
+          value === 'imperial' ? 'metric' : 'imperial';
 
-        updateLocalStorageItem(userPreferenceStorageName, { temperatureScale });
+        updateLocalStorageItem(userPreferenceStorageName, {
+          systemOfMeasurement,
+        });
 
         return dispatch({
           type: 'SET_USER_PREFERENCE',
-          payload: { temperatureScale },
+          payload: { systemOfMeasurement },
         });
       }
       case 'themeMode': {
