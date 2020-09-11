@@ -45,9 +45,9 @@ function SearchBar({ theme }) {
   const [stateSelectKey, setStateSelectKey] = useState(INITIAL_STATE);
   const [disabled, setDisabled] = useState(true);
 
-  /*useEffect(() => {
+  useEffect(() => {
     dispatch(getWeather('seattle', 'washington'));
-  }, [dispatch]);*/
+  }, [dispatch]);
 
   useEffect(() => {
     const hasCity = city;

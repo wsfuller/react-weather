@@ -1,5 +1,4 @@
 const DetailTileStyles = (theme) => {
-  console.log('THEME: ', theme);
   return {
     root: {
       width: '100%',

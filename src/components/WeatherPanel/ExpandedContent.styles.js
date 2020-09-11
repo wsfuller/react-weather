@@ -1,5 +1,4 @@
 const ExpandedContentStyles = (theme) => {
-  console.log('EXPANDED CONTENT STYLES THEME: ', theme);
   return {
     location: {
       marginTop: 0,

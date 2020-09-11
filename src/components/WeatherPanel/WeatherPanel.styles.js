@@ -1,13 +1,12 @@
 const WeatherPanelStyles = (theme) => {
-  console.log('THEME: ', theme);
   return {
     root: {
-      position: 'absolute',
+      position: 'relative',
       left: 0,
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
-      height: 'calc(100% - 48px)',
+      height: '100%',
       backgroundColor: theme.palette.neutralLighterAlt,
       borderTop: `1px solid ${theme.palette.accent}`,
       overflowY: 'auto',
