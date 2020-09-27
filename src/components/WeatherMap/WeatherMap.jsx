@@ -3,7 +3,13 @@ import { useSelector } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import GoogleMapReact from 'google-map-react';
 
-import { Text, Spinner, SpinnerSize, getTheme } from '@fluentui/react';
+import {
+  Link,
+  MessageBar,
+  Spinner,
+  SpinnerSize,
+  getTheme,
+} from '@fluentui/react';
 
 import mapOptions from './mapOptions';
 import MapMarker from './MapMarker';
@@ -37,7 +43,15 @@ function WeatherMap() {
       </GoogleMapReact>
     );
   } else if (error) {
-    content = <Text>Error Fetching Weather Details</Text>;
+    content = (
+      <MessageBar
+        messageBarType={1}
+        isMultiline={false}
+        dismissButtonAriaLabel="Close">
+        {`${error.message}, please try again later`}
+        <Link href="/help">Need help?</Link>
+      </MessageBar>
+    );
   } else if (loading) {
     content = (
       <Spinner

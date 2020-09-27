@@ -7,8 +7,6 @@ import {
   classNamesFunction,
   styled,
   ComboBox,
-  Link,
-  MessageBar,
   PrimaryButton,
   SearchBox,
   SelectableOptionMenuItemType,
@@ -111,16 +109,6 @@ function SearchBar({ theme }) {
           disabled={disabled}
         />
       </form>
-      {weather.error && (
-        <MessageBar
-          className={classes.errorMessage}
-          messageBarType={1}
-          isMultiline={false}
-          dismissButtonAriaLabel="Close">
-          {`${weather.error.message}, please try again later`}
-          <Link href="/help">Need help?</Link>
-        </MessageBar>
-      )}
     </div>
   );
 }

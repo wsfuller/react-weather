@@ -34,10 +34,6 @@ const SearchBarStyles = (theme) => {
     divider: {
       margin: `0 ${theme.spacing.m}`,
     },
-    errorMessage: {
-      position: 'absolute',
-      top: '100%',
-    },
   };
 };
 
