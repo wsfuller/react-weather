@@ -6,10 +6,10 @@ import {
   classNamesFunction,
   styled,
   IconButton,
+  MessageBar,
   Spinner,
   SpinnerSize,
   Stack,
-  Text,
 } from '@fluentui/react';
 
 import WeatherPanelStyles from './WeatherPanel.styles';
@@ -23,7 +23,7 @@ const getClassNames = classNamesFunction();
 
 function WeatherPanel({ theme }) {
   const classes = getClassNames(WeatherPanelStyles, theme);
-  const [showPanel, setShowPanel] = useState(true);
+  const [isPanelExpanded, setIsPanelExpanded] = useState(true);
   const { forecast, location, error, loading } = useSelector(
     (state) => state.weather
   );
@@ -33,13 +33,20 @@ function WeatherPanel({ theme }) {
   if (!isEmpty(forecast)) {
     const weatherDetails = collateWeatherDetails(forecast, location);
 
-    content = showPanel ? (
+    content = isPanelExpanded ? (
       <ExpandedContent weatherDetails={weatherDetails} />
     ) : (
       <CollapsedContent weatherDetails={weatherDetails} />
     );
   } else if (error) {
-    content = <Text>Error Fetching Weather Details</Text>;
+    content = (
+      <MessageBar
+        messageBarType={1}
+        isMultiline={true}
+        dismissButtonAriaLabel="Close">
+        {isPanelExpanded ? 'Error displaying weather details' : 'Error'}
+      </MessageBar>
+    );
   } else if (loading) {
     content = (
       <Spinner
@@ -55,7 +62,7 @@ function WeatherPanel({ theme }) {
   return (
     <div
       className={`${classes.root} ${
-        showPanel ? classes.panelExpanded : classes.panelCollapsed
+        isPanelExpanded ? classes.panelExpanded : classes.panelCollapsed
       }`}>
       <div className={classes.panelContent}>{content}</div>
       <Stack>
@@ -63,12 +70,12 @@ function WeatherPanel({ theme }) {
           <IconButton
             iconProps={{
               iconName: `${
-                showPanel ? 'DoubleChevronLeft' : 'DoubleChevronRight'
+                isPanelExpanded ? 'DoubleChevronLeft' : 'DoubleChevronRight'
               }`,
             }}
             title="Toggle Panel"
             ariaLabel="Toggle Panel"
-            onClick={() => setShowPanel(!showPanel)}
+            onClick={() => setIsPanelExpanded(!isPanelExpanded)}
           />
         </Stack.Item>
       </Stack>
