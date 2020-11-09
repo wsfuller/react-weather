@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
+import classNames from 'classnames';
 
+import { useTheme } from '@fluentui/react-theme-provider';
 import {
-  classNamesFunction,
-  styled,
   IconButton,
   MessageBar,
   Spinner,
@@ -12,21 +12,23 @@ import {
   Stack,
 } from '@fluentui/react';
 
-import WeatherPanelStyles from './WeatherPanel.styles';
+import useWeatherPanelStyles from './WeatherPanel.styles';
 
 import CollapsedContent from './CollapsedContent';
 import ExpandedContent from './ExpandedContent';
 
 import { collateWeatherDetails } from '../../utils/collateWeatherDetails';
 
-const getClassNames = classNamesFunction();
-
-function WeatherPanel({ theme }) {
-  const classes = getClassNames(WeatherPanelStyles, theme);
+function WeatherPanel() {
+  const theme = useTheme();
+  const classes = useWeatherPanelStyles();
   const [isPanelExpanded, setIsPanelExpanded] = useState(true);
   const { forecast, location, error, loading } = useSelector(
     (state) => state.weather
   );
+  const weatherPanelClass = classNames(classes.root, {
+    'panel-collapsed': !isPanelExpanded,
+  });
 
   let content;
 
@@ -60,10 +62,7 @@ function WeatherPanel({ theme }) {
   }
 
   return (
-    <div
-      className={`${classes.root} ${
-        isPanelExpanded ? classes.panelExpanded : classes.panelCollapsed
-      }`}>
+    <aside className={weatherPanelClass}>
       <div className={classes.panelContent}>{content}</div>
       <Stack>
         <Stack.Item align="end">
@@ -79,8 +78,8 @@ function WeatherPanel({ theme }) {
           />
         </Stack.Item>
       </Stack>
-    </div>
+    </aside>
   );
 }
 
-export default styled(WeatherPanel, WeatherPanelStyles);
+export default WeatherPanel;

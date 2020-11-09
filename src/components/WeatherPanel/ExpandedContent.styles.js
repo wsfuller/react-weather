@@ -1,9 +1,11 @@
-const ExpandedContentStyles = (theme) => {
+import { makeStyles } from '@fluentui/react-theme-provider';
+
+const useExpandedContentStyles = makeStyles((theme) => {
   return {
     location: {
       marginTop: 0,
       padding: `0 ${theme.spacing.s1}`,
-      fontWeight: theme.FontWeights.light,
+      fontWeight: theme.fontWeights.light,
       textAlign: 'right',
     },
     locationIcon: {
@@ -12,10 +14,10 @@ const ExpandedContentStyles = (theme) => {
     },
     currentTemperature: {
       marginTop: 0,
-      fontWeight: theme.FontWeights.light,
+      fontWeight: theme.fontWeights.light,
       textAlign: 'center',
     },
   };
-};
+});
 
-export default ExpandedContentStyles;
+export default useExpandedContentStyles;

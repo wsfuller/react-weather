@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { WiStrongWind, WiSunrise, WiSunset } from 'weather-icons-react';
 
-import { classNamesFunction, styled, Stack, Text } from '@fluentui/react';
+import { Stack, Text } from '@fluentui/react';
 import { Icon } from '@fluentui/react/lib/Icon';
 
-import ExpandedContentStyles from './ExpandedContent.styles';
+import useExpandedContentStyles from './ExpandedContent.styles';
 import { DetailBar, DetailCard } from '../WeatherDetail';
 
 import {
@@ -14,10 +14,8 @@ import {
   UNITS_OF_MEASUREMENT,
 } from '../../utils/collateWeatherDetails';
 
-const getClassNames = classNamesFunction();
-
 function ExpandedContent({ theme, weatherDetails }) {
-  const classes = getClassNames(ExpandedContentStyles, theme);
+  const classes = useExpandedContentStyles();
   const { systemOfMeasurement } = useSelector((state) => state.userPreferences);
   const {
     location: { city, state },
@@ -123,4 +121,4 @@ ExpandedContent.propTypes = {
   weatherDetails: PropTypes.shape(weatherDetailsPropTypes).isRequired,
 };
 
-export default styled(ExpandedContent, ExpandedContentStyles);
+export default ExpandedContent;

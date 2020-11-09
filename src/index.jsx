@@ -4,20 +4,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Fabric } from '@fluentui/react';
 import { initializeIcons } from '@uifabric/icons';
 
+import './index.css';
 import App from './components/App';
 
 initializeIcons();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Fabric>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Fabric>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

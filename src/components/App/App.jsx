@@ -1,28 +1,17 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
-import {
-  classNamesFunction,
-  FontWeights,
-  loadTheme,
-  styled,
-} from '@fluentui/react';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { Stack } from '@fluentui/react';
 
-import { styles } from './App.styles';
-import { breakpoints, lightTheme, darkTheme } from './themes';
+import { darkTheme, lightTheme } from '../../themes';
+
 import AppBar from '../AppBar';
 import Routes from '../../pages/Routes';
 import Modal from '../Modal';
 
-let currentTheme = lightTheme;
-loadTheme(currentTheme);
-
-function App({ theme }) {
-  const getClassNames = classNamesFunction();
-  const classes = getClassNames(
-    styles,
-    Object.assign(theme, { breakpoints, FontWeights })
-  );
+function App() {
+  const [currentTheme, setCurrentTheme] = useState(lightTheme);
   const { darkMode } = useSelector(
     (state) => ({
       darkMode: state.userPreferences.darkMode,
@@ -31,8 +20,7 @@ function App({ theme }) {
   );
 
   const toggleAppTheme = useCallback(() => {
-    currentTheme = darkMode ? darkTheme : lightTheme;
-    loadTheme(currentTheme);
+    setCurrentTheme(darkMode ? darkTheme : lightTheme);
   }, [darkMode]);
 
   useEffect(() => {
@@ -40,12 +28,17 @@ function App({ theme }) {
   }, [darkMode, toggleAppTheme]);
 
   return (
-    <div className={classes.root}>
-      <AppBar />
-      <Routes />
-      <Modal />
-    </div>
+    <ThemeProvider
+      applyTo="body"
+      theme={currentTheme}
+      className="page-container">
+      <Stack as="main" styles={{ root: { height: '100%' } }}>
+        <AppBar />
+        <Routes />
+        <Modal />
+      </Stack>
+    </ThemeProvider>
   );
 }
 
-export default styled(App, styles);
+export default App;

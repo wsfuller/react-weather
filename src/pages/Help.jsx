@@ -4,7 +4,7 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 function Help() {
   return (
-    <div>
+    <div className="faq-page-container ">
       <h1>Help</h1>
       <Stack>
         <Stack.Item>

@@ -2,32 +2,23 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  Callout,
-  classNamesFunction,
-  IconButton,
-  styled,
-  Text,
-  Toggle,
-} from '@fluentui/react';
+import { Callout, IconButton, Text, Toggle } from '@fluentui/react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { useBoolean, useId } from '@uifabric/react-hooks';
 
-import UserPreferencesStyles from './UserPreferences.styles';
+import useUserPreferencesStyles from './UserPreferences.styles';
 import {
   getUserPreferences,
   toggleUserPreference,
 } from '../../redux/actions/userPreferences';
 
-const getClassNames = classNamesFunction();
-
-function UserPreferences({ theme }) {
+function UserPreferences() {
   const dispatch = useDispatch();
   const userPreferences = useSelector((state) => state.userPreferences);
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(
     false
   );
-  const classes = getClassNames(UserPreferencesStyles, theme);
+  const classes = useUserPreferencesStyles();
   const labelId = useId('callout-label');
   const descriptionId = useId('callout-description');
 
@@ -40,8 +31,8 @@ function UserPreferences({ theme }) {
       <div className={classes.userPreferenceButton}>
         <IconButton
           iconProps={{ iconName: 'PlayerSettings' }}
-          title="User Settings"
-          ariaLabel="User Settings"
+          title="User Preferences"
+          ariaLabel="User Preferences"
           onClick={toggleIsCalloutVisible}
         />
       </div>
@@ -82,7 +73,8 @@ function UserPreferences({ theme }) {
             <hr />
             <Toggle
               label="Time Format"
-              disabled={userPreferences.loading}
+              // disabled={userPreferences.loading}
+              disabled
               className={classes.themeToggle}
               defaultChecked={userPreferences.timeFormat === '24h'}
               offText="AM/PM"
@@ -116,4 +108,4 @@ function UserPreferences({ theme }) {
   );
 }
 
-export default styled(UserPreferences, UserPreferencesStyles);
+export default UserPreferences;

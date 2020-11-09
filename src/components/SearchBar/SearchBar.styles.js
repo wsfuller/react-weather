@@ -1,4 +1,6 @@
-const SearchBarStyles = (theme) => {
+import { makeStyles } from '@fluentui/react-theme-provider';
+
+const useSearchBarStyles = makeStyles((theme) => {
   return {
     root: {
       display: 'flex',
@@ -35,6 +37,6 @@ const SearchBarStyles = (theme) => {
       margin: `0 ${theme.spacing.m}`,
     },
   };
-};
+});
 
-export default SearchBarStyles;
+export default useSearchBarStyles;

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Stack } from '@fluentui/react';
 
@@ -8,19 +8,19 @@ import WeatherMap from '../components/WeatherMap';
 
 function Home() {
   return (
-    <Fragment>
+    <Stack as="article" style={{ height: '100%' }}>
       <SearchBar />
-      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-        <Stack horizontal style={{ height: '100%', width: '100%' }}>
-          <Stack.Item>
-            <WeatherPanel />
-          </Stack.Item>
-          <Stack.Item grow={1}>
-            <WeatherMap />
-          </Stack.Item>
-        </Stack>
-      </div>
-    </Fragment>
+      <Stack
+        horizontal
+        styles={{
+          root: { position: 'relative', height: '100%', width: '100%' },
+        }}>
+        <WeatherPanel />
+        <Stack.Item grow={1}>
+          <WeatherMap />
+        </Stack.Item>
+      </Stack>
+    </Stack>
   );
 }
 

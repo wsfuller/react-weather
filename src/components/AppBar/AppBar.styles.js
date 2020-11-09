@@ -1,4 +1,6 @@
-const AppBarStyles = (theme) => {
+import { makeStyles } from '@fluentui/react-theme-provider';
+
+const useAppBarStyles = makeStyles((theme) => {
   return {
     root: {
       width: '100%',
@@ -9,18 +11,12 @@ const AppBarStyles = (theme) => {
       display: 'flex',
       alignItems: 'center',
       color: `${theme.palette.neutralPrimary}`,
-      selectors: {
-        ':hover': {
-          color: `${theme.palette.neutralPrimary}`,
-          textDecoration: 'none',
-        },
-      },
     },
-    logo: {
+    appLogo: {
       display: 'inline-block',
       marginRight: 5,
     },
   };
-};
+});
 
-export default AppBarStyles;
+export default useAppBarStyles;

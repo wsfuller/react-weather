@@ -4,8 +4,6 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 
 import {
-  classNamesFunction,
-  styled,
   ComboBox,
   PrimaryButton,
   SearchBox,
@@ -14,7 +12,7 @@ import {
 import { Icon } from '@fluentui/react/lib/Icon';
 
 import states from '../../utils/states';
-import SearchBarStyles from './SearchBar.styles';
+import useSearchBarStyles from './SearchBar.styles';
 import getWeather from '../../redux/actions/weather';
 
 const stateSelectHeader = {
@@ -24,15 +22,12 @@ const stateSelectHeader = {
   disabled: true,
 };
 const stateOptions = [stateSelectHeader, ...states];
-
-const getClassNames = classNamesFunction();
-
 const INITIAL_CITY = '';
 const INITIAL_STATE = 'select-a-state';
 
-function SearchBar({ theme }) {
+function SearchBar() {
   const dispatch = useDispatch();
-  const classes = getClassNames(SearchBarStyles, theme);
+  const classes = useSearchBarStyles();
 
   const { weather } = useSelector(
     (state) => ({ weather: state.weather }),
@@ -86,7 +81,7 @@ function SearchBar({ theme }) {
   );
 
   return (
-    <div className={classes.root}>
+    <header className={classes.root}>
       <form className={classes.form} onSubmit={handleSubmit}>
         <SearchBox
           name="city"
@@ -109,8 +104,8 @@ function SearchBar({ theme }) {
           disabled={disabled}
         />
       </form>
-    </div>
+    </header>
   );
 }
 
-export default styled(SearchBar, SearchBarStyles);
+export default SearchBar;

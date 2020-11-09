@@ -1,4 +1,6 @@
-const UserPreferencesStyles = (theme) => {
+import { makeStyles } from '@fluentui/react-theme-provider';
+
+const useUserPreferencesStyles = makeStyles((theme) => {
   return {
     userPreferenceButton: {
       verticalAlign: 'top',
@@ -14,7 +16,6 @@ const UserPreferencesStyles = (theme) => {
       theme.fonts.large,
       {
         margin: 0,
-        fontWeight: theme.FontWeights.semilight,
       },
     ],
     calloutBody: {
@@ -25,7 +26,6 @@ const UserPreferencesStyles = (theme) => {
       theme.fonts.small,
       {
         margin: 0,
-        fontWeight: theme.FontWeights.semilight,
       },
     ],
     themeToggle: {
@@ -36,6 +36,6 @@ const UserPreferencesStyles = (theme) => {
       top: 2,
     },
   };
-};
+});
 
-export default UserPreferencesStyles;
+export default useUserPreferencesStyles;

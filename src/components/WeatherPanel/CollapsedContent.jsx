@@ -12,10 +12,9 @@ import {
   WiThermometerExterior,
 } from 'weather-icons-react';
 
-import { classNamesFunction, styled } from '@fluentui/react';
 import { Icon } from '@fluentui/react/lib/Icon';
 
-import CollapsedContentStyles from './CollapsedContent.styles';
+import useCollapsedContentStyles from './CollapsedContent.styles';
 import { DetailTile } from '../WeatherDetail';
 
 import {
@@ -23,10 +22,8 @@ import {
   UNITS_OF_MEASUREMENT,
 } from '../../utils/collateWeatherDetails';
 
-const getClassNames = classNamesFunction();
-
-function CollapsedContent({ theme, weatherDetails }) {
-  const classes = getClassNames(CollapsedContentStyles, theme);
+function CollapsedContent({ weatherDetails }) {
+  const classes = useCollapsedContentStyles();
   const { systemOfMeasurement } = useSelector((state) => state.userPreferences);
 
   const {
@@ -127,4 +124,4 @@ CollapsedContent.propTypes = {
   weatherDetails: PropTypes.shape(weatherDetailsPropTypes).isRequired,
 };
 
-export default styled(CollapsedContent, CollapsedContentStyles);
+export default CollapsedContent;

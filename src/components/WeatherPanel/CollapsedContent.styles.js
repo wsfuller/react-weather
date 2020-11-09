@@ -1,19 +1,19 @@
-const CollapsedContentStyles = (theme) => {
+import { makeStyles } from '@fluentui/react-theme-provider';
+
+const useCollapsedContentStyles = makeStyles((theme) => {
   return {
     fluentIcon: {
       fontSize: '65%',
     },
     location: {
       marginTop: 0,
-      fontWeight: theme.FontWeights.light,
       textAlign: 'right',
     },
     currentTemperature: {
       marginTop: 0,
-      fontWeight: theme.FontWeights.light,
       textAlign: 'center',
     },
   };
-};
+});
 
-export default CollapsedContentStyles;
+export default useCollapsedContentStyles;
