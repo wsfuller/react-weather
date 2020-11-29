@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import GoogleMapReact from 'google-map-react';
 
@@ -49,7 +50,9 @@ function WeatherMap() {
         isMultiline={false}
         dismissButtonAriaLabel="Close">
         {`${error.message}, please try again later`}
-        <Link href="/help">Need help?</Link>
+        <Link as={RouterLink} to="/help">
+          Need help?
+        </Link>
       </MessageBar>
     );
   } else if (loading) {
