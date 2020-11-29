@@ -32,7 +32,7 @@ function WeatherMap() {
     };
     content = (
       <GoogleMapReact
-        boostrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_KEY }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_KEY }}
         center={mapCenter.center}
         defaultZoom={mapCenter.zoom}
         options={mapOptions}>
