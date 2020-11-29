@@ -1,4 +1,4 @@
-# React Weather
+# ReactWeather
 
 [![Known Vulnerabilities](https://snyk.io/test/github/wsfuller/react-weather/badge.svg)](https://snyk.io/test/github/wsfuller/react-weather)
 [![Dependency Status](https://gemnasium.com/badges/github.com/wsfuller/react-weather.svg)](https://gemnasium.com/github.com/wsfuller/react-weather)
