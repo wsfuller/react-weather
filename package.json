@@ -17,7 +17,7 @@
   "author": "William S Fuller <wsfuller.dev@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "redux-devtools-extension": "~2.13.2",
     "rimraf": "^3.0.2"
   },
